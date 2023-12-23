@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student Registration Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css">
+  <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Registration From</h2>
+    
+    <form action="SaveStudent" method="post">
+      <fieldset>
+        <div class="input-field">
+          <label>First Name</label>
+          <i class="fa fa-user icon"></i>
+          <input type="text" class="inputs" name="firstName" required>
+        </div>
+
+        <div class="input-field">
+          <label>Last Name</label>
+          <i class="fa-solid fa-people-roof icon"></i>
+          <input type="text" class="inputs" name="lastName" required>
+        </div>
+
+        <div class="input-field">
+          <label>Mother's name</label>
+          <i class="fa-solid fa-people-roof icon"></i>
+          <input type="text" class="inputs" name="motherName">
+        </div>
+
+        <div class="input-field">
+          <label>Email</label>
+          <i class="fa fa-envelope icon"></i>
+          <input type="email" class="inputs" name="Email">
+        </div>
+
+        <div class="input-field" >
+          <label class="gender" >Gender</label>
+          <input type="radio" name="gender" value="male" dirname="gender" >Male
+          <input type="radio" name="gender" value="female" dirname="gender"> Female
+        </div>
+
+        <div class="input-field">
+          <label>Password</label>
+          <i class="fa fa-eye-slash icon"></i>
+          <input type="password" class="inputs" name="password" >
+        </div>
+
+        <div class="input-field">
+          <label class="message">Address</label>
+          <i class="fa-solid fa-address-book icon textarea-icon"></i>
+          <textarea class="textarea" name="address"></textarea>
+        </div>
+
+        <div class="input-field">
+          <label class="city">City</label>
+          <i class="fa fa-list icon"></i>
+          <select name="city" id="" class="inputs" >
+            <option value="0">Select City</option>
+            <option value="1" >Jordan</option>
+            <option value="2" >USA</option>
+            <option value="3" >palestine</option>
+            <option value="4" >Egypt</option>
+            <option value="5" >syria</option>
+          </select>
+        </div>
+        
+        <div class="input-field">
+          <label>Phone No</label>
+          <i class="fa fa-phone icon"></i>
+          <input type="number" class="inputs" name="phone">
+        </div>
+
+        <div class="input-field">
+          <label class="courses">Courses</label>
+          <input class="" type="checkbox" value="app-development" name="course1">App Development
+          <input class="" type="checkbox" value="marketing" name="course2">Marketing
+          <input class="" type="checkbox" value="editing" name="course3">Editing
+        </div>
+        
+      </fieldset>
+
+      
+
+      <div class="button">
+        <button type="submit" class="submit">Submit</button>
+
+        <button type="button" onclick="window.location.href='ViewStudent';"  class="submit">View Students</button>
+
+        <button type="reset" class="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
