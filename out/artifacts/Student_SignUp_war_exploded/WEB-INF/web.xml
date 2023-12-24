@@ -8,11 +8,13 @@
         <servlet-name>myViewStudent</servlet-name>
         <servlet-class>com.example.student_signup.ViewStudent</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>myViewStudent</servlet-name>
         <url-pattern>/ViewStudent</url-pattern>
     </servlet-mapping>
-    
+
+
     <welcome-file-list>
         <welcome-file>SignUp.html</welcome-file>
     </welcome-file-list>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GetStudent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css">
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+
+<form action="getStudent" method="post">
+    <fieldset>
+        <div class="input-field">
+            <label>Student ID :</label>
+            <i class="fa fa-user icon"></i>
+            <input type="text" class="inputs2" name="stdId" required>
+        </div>
+    </fieldset>
+
+    <div class="button">
+        <button type="submit" class="submit">Get Student</button>
+
+        <button type="button" onclick="window.location.href='ViewStudent';"  class="submit">View Students</button>
+
+        <button type="button" onclick="window.location.href='SignUp.html';"  class="submit">Add Students</button>
+
+        <button type="reset" class="reset">Reset</button>
+
+
+    </div>
+</form>
+
+</body>
+</html>

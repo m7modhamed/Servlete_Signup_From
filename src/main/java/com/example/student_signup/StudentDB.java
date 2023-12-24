@@ -27,13 +27,13 @@ public class StudentDB {
     // SQLSERVER DB connction
     public static Connection getConnection() {
         //String url = "jdbc:oracle:thin:@//localhost:1521/xepdb1";
-        //String url = "jdbc:mysql://localhost:3306/students_data";
-        String url = "jdbc:mysql://fdb1033.awardspace.net:3306/4418734_studentdata";
+        String url = "jdbc:mysql://localhost:3306/students_data";
+        //String url = "jdbc:mysql://sql110.eb2a.com/eb2a_35648994_students_signup";
 
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(url,"4418734_studentdata","w1sXuf]29_17(V[w");
+            con = DriverManager.getConnection(url, "root", "");
         } catch (ClassNotFoundException | SQLException sq) {
             //noinspection CallToPrintStackTrace
             sq.printStackTrace();
@@ -123,7 +123,7 @@ public class StudentDB {
         return st;
     }
 
-
+/*
     public static StudentInfo getStudentById(int id) {
         String query = "select * from students where id=?";
         Connection con = StudentDB.getConnection();
@@ -133,14 +133,18 @@ public class StudentDB {
             PreparedStatement sqlStatement = con.prepareStatement(query);
             sqlStatement.setInt(1, id);
             ResultSet set = sqlStatement.executeQuery();
-            while (set.next()) {
+            set.next();
+            std.setId(set.getInt(1));
+            std.setFirstName(set.getString(2));
+            std.setLastName(set.getString(3));
+            std.setMotherName(set.getString(4));
+            std.setEmail(set.getString(5));
+            std.setGender(set.getString(6));
+            std.setPassword(set.getString(7));
+            std.setAddress(set.getString(8));
+            std.setCity(set.getString(9));
+            std.setPhone(set.getString(10));
 
-                std.setId(set.getInt(1));
-                std.setFirstName(set.getString(2));
-                std.setLastName(set.getString(3));
-                std.setEmail(set.getString(4));
-                std.setPassword(set.getString(5));
-            }
 
             con.close();
         } catch (SQLException e) {
@@ -148,7 +152,43 @@ public class StudentDB {
         }
         return std;
     }
+    */
 
+
+    public static ArrayList<StudentInfo> getStudentById(String id) {
+        String query = "select * from students where id="+id;
+        Connection con = StudentDB.getConnection();
+        StudentInfo std = new StudentInfo();
+        ArrayList<StudentInfo> list = new ArrayList<>();
+        try {
+            PreparedStatement sqlStatement = con.prepareStatement(query);
+
+            ResultSet set = sqlStatement.executeQuery();
+
+
+
+            while (set.next()) {
+                std = new StudentInfo();
+                std.setId(set.getInt(1));
+                std.setFirstName(set.getString(2));
+                std.setLastName(set.getString(3));
+                std.setMotherName(set.getString(4));
+                std.setEmail(set.getString(5));
+                std.setGender(set.getString(6));
+                std.setPassword(set.getString(7));
+                std.setAddress(set.getString(8));
+                std.setCity(set.getString(9));
+                std.setPhone(set.getString(10));
+                list.add(std);
+            }
+
+
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
 
     public static List<StudentInfo> getAllStudent() {
         ArrayList<StudentInfo> list = new ArrayList<>();

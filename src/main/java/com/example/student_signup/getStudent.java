@@ -8,16 +8,22 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
-//@WebServlet("/ViewStudent")
-public class ViewStudent extends HttpServlet {
+@WebServlet("/getStudent")
+public class getStudent extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
-
+        StringBuilder builder = new StringBuilder();
         out.println("<head>");
         out.println("<link rel=\"stylesheet\" href=\"View.css\">");
         out.println("</head>");
@@ -26,16 +32,14 @@ public class ViewStudent extends HttpServlet {
 
 
         out.println("<h1>Student Table</h1>");
-
-
-        List<StudentInfo> list = null;
-        list = StudentDB.getAllStudent();
-        StringBuilder builder = new StringBuilder();
         out.println("<table border='1' width='100%' class=\"styled-table\">");
 
         out.println("<tr> <th>ID</th> <th>First Name</th> <th>Last Name</th> <th>Mid Name</th>" +
                 " <th>Email</th> <th>Gender</th> <th>Password</th> <th>Address</th> <th>City</th> <th>Phone</th>" +
                 "  <th>Courses</th> <th>Delete</th> </tr>");
+
+        ArrayList<StudentInfo> list = StudentDB.getStudentById((req.getParameter("stdId")));
+
         for (StudentInfo s : list) {
             //builder.delete(0,builder.length()-1);
             builder.setLength(0);
@@ -58,18 +62,35 @@ public class ViewStudent extends HttpServlet {
 
         }
 
+        //StudentInfo std ;
+
+
+
+
+      /*
+      out.println(std.getId()+"/n"+std.getFirstName()+"/n"+std.getLastName()+"/n"+std.getMotherName()+"/n"+std.getEmail()+"/n"
+       +std.getAddress()+"/n"+std.getPassword()+"/n"+std.getCity()+"/n"+std.getGender()+"/n"+std.getPhone());
+       */
+
+
+
+
         out.println("</table>");
 
+        out.println( "<button type=\"button\" onclick=\"window.location.href='getStudent.html';\"  class=\"submit\">Get Student (ID)</button>");
 
         out.println("<div class=\"button\">\n" +
                 "        <button type=\"button\" onclick=\"window.location.href='SignUp.html';\"  class=\"btnadd\">Add Student</button>\n" +
                 "</div>");
+
         out.println("</body>");
-    }
+       // resp.sendRedirect("ViewStudent");
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+       /* if (state > 0) {
+            out.println("<h2>inserted done</h2>");
+        } else {
+            out.println("<h2>Inserted fail</h2>");
+        }*/
 
     }
 }

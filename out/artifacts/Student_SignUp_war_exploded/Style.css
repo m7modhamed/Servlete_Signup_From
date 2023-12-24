@@ -55,6 +55,8 @@
       width: 70%;
     }
 
+
+
     input [type="radio"] {
       margin-right: 8px;
     }
@@ -118,3 +120,4 @@
     .message {
       margin-left: -30px;
     }
+
